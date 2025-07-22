@@ -1,0 +1,50 @@
+---
+title: "Analysis"
+output: html_document
+---
+
+
+- Title briefly summarises data analysis
+- Synopsis describes and summarizes the data analysis in less than 10 sentences
+
+- Section Titled DATA PROCESSING
+
+- Section Titles RESULTS
+
+- Min 1 figure Max 3 Figures
+- Does each figure have a caption to explain analysis?
+- Is each plot reproducible?
+
+- Most harmful events Columns (FATALITIES, INJURIES, EVTYPE, STATE)
+- Greatest economic consequences (PROPDMG, PROPDMGEXP, CROPDMG, CROPDMGEXP)
+
+- Which events (EVTYPE) are most harmful with respect to population health?
+- Which events across the United States have the greatest economic impact?
+
+
+- If preprocessing is time-consuming you may consider using the cache = TRUE on chunks
+
+Consider writing your report as if it were to be read by a government or municipal manager who might be responsible for preparing for severe weather events and will need to prioritize resources for different types of events. However, there is no need to make any specific recommendations in your report.
+# Read in The Dataset
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(rstudioapi)
+setwd(dirname(getSourceEditorContext()$path))
+# Load in Data Initially Very Large File so Going to Analyse first 100 Rows
+
+df <- read.csv("../raw_data/repdata_data_StormData.csv", nrows=100)
+
+str(df)
+```
+```{r}
+summary(df)
+```
+```{r}
+colSums(is.na(df))
+```
+```{r}
+unique(df$EVTYPE)
+```
+
